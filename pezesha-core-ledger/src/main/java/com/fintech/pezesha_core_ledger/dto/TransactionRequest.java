@@ -9,23 +9,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.Map;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class TransactionRequest {
-    @NotBlank
+    @NotBlank(message = "Idempotency key is required")
     private String idempotencyKey;
 
-    @NotBlank
-    @Size(max = 500)
+    @NotBlank(message = "Description is required")
+    @Size(max = 500, message = "Description cannot exceed 500 characters")
     private String description;
 
-    @NotNull
-    @Size(min = 2)
+    @NotNull(message = "Transaction entries are required")
+    @Size(min = 2, message = "Transaction must have at least 2 entries")
     private List<TransactionEntryRequest> entries;
-
-    private Map<String, Object> metadata;
 }

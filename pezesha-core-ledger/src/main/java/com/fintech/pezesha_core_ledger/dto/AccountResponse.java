@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountDTO {
+public class AccountResponse {
     private String id;
     private String code;
     private String name;
@@ -22,4 +22,5 @@ public class AccountDTO {
     private String parentId;
     private Boolean isActive;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

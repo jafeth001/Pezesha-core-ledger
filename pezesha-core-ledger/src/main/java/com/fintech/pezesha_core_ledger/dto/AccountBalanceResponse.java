@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountBalanceDTO {
+public class AccountBalanceResponse {
     private String accountId;
     private String accountCode;
     private String accountName;

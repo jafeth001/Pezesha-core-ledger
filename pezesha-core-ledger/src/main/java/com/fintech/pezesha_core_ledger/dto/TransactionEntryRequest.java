@@ -16,17 +16,17 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TransactionEntryRequest {
-    @NotBlank
+    @NotBlank(message = "Account ID is required")
     private String accountId;
 
-    @NotNull
-    @DecimalMin(value = "0.0", inclusive = true)
+    @NotNull(message = "Debit amount is required")
+    @DecimalMin(value = "0.0", inclusive = true, message = "Debit amount must be positive")
     private BigDecimal debit;
 
-    @NotNull
-    @DecimalMin(value = "0.0", inclusive = true)
+    @NotNull(message = "Credit amount is required")
+    @DecimalMin(value = "0.0", inclusive = true, message = "Credit amount must be positive")
     private BigDecimal credit;
 
-    @NotNull
+    @NotNull(message = "Currency is required")
     private Currency currency;
 }
