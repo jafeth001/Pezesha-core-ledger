@@ -10,28 +10,28 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-/**
- * This models customer debt obligations.
- */
-
 @Entity
-@Table(name = "loans", indexes = {
-        @Index(name = "idx_loan_customer", columnList = "customer_id"),
-        @Index(name = "idx_loan_status", columnList = "status"),
-        @Index(name = "idx_loan_due_date", columnList = "due_date")
-})
+@Table(
+        name = "loans",
+        indexes = {
+                @Index(name = "idx_loan_account", columnList = "account_id"),
+                @Index(name = "idx_loan_status", columnList = "status"),
+                @Index(name = "idx_loan_due_date", columnList = "due_date")
+        }
+)
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Loan {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @Column(name = "customer_id", nullable = false)
-    private String customerId;
+    @Column(name = "account_id", nullable = false)
+    private String accountId;
 
     @Column(name = "principal_amount", nullable = false)
     private BigDecimal principalAmount;

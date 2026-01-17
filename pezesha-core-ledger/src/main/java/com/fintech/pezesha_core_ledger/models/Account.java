@@ -26,7 +26,7 @@ import java.time.LocalDateTime;
 @Builder
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     @Column(nullable = false, unique = true)
     private String code;

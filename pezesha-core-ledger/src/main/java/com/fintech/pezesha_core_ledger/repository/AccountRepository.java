@@ -18,10 +18,6 @@ public interface AccountRepository extends JpaRepository<Account, String> {
 
     List<Account> findByTypeAndCurrency(AccountType type, Currency currency);
 
-    List<Account> findByParentIdAndIsActiveTrue(String parentId);
-
     List<Account> findByIsActiveTrue();
 
-    @Query("SELECT a FROM Account a WHERE a.code LIKE :prefix% AND a.isActive = true ORDER BY a.code")
-    List<Account> findByCodePrefix(@Param("prefix") String prefix);
 }

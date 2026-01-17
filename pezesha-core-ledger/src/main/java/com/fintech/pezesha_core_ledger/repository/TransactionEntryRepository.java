@@ -16,16 +16,17 @@ import java.util.List;
 @Repository
 public interface TransactionEntryRepository extends JpaRepository<TransactionEntry, String> {
 
-
-    @Query("SELECT te FROM TransactionEntry te WHERE te.account.id = :accountId AND te.transaction.status = 'POSTED' ORDER BY te.postedAt, te.createdAt")
-    List<TransactionEntry> findByAccountId(@Param("accountId") String accountId);
-
     @Query("SELECT COALESCE(SUM(te.debit - te.credit), 0) FROM TransactionEntry te WHERE te.account.id = :accountId AND te.transaction.status = 'POSTED' AND te.postedAt <= :asOfDate")
     BigDecimal getAccountBalanceAsOf(@Param("accountId") String accountId, @Param("asOfDate") LocalDateTime asOfDate);
 
-    @Query("SELECT te FROM TransactionEntry te WHERE te.account.id = :accountId AND te.transaction.status = 'POSTED' AND te.postedAt <= :asOfDate ORDER BY te.postedAt, te.createdAt")
-    List<TransactionEntry> getAccountEntriesAsOf(
+    @Query("SELECT te FROM TransactionEntry te WHERE te.account.id = :accountId AND te.postedAt BETWEEN :startDate AND :endDate ORDER BY te.postedAt DESC, te.id DESC")
+    Page<TransactionEntry> findByAccountIdAndDateRange(
             @Param("accountId") String accountId,
-            @Param("asOfDate") LocalDateTime asOfDate
-    );
+            @Param("startDate") LocalDateTime startDate,
+            @Param("endDate") LocalDateTime endDate,
+            Pageable pageable);
+
+
 }
+
+

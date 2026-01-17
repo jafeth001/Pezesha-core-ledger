@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -56,13 +57,12 @@ public class Transaction {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    @PrePersist
-    public void prePersist() {
-        if (status == null) {
-            status = TransactionStatus.PENDING;
-        }
-        if (postedAt == null && status == TransactionStatus.POSTED) {
-            postedAt = LocalDateTime.now();
-        }
+public void addEntry(TransactionEntry entry) {
+    if (this.entries == null) {
+        this.entries = new ArrayList<>();
     }
+    this.entries.add(entry);
+    entry.setTransaction(this);
+}
+
 }

@@ -1,8 +1,10 @@
 package com.fintech.pezesha_core_ledger.dto;
 
 import com.fintech.pezesha_core_ledger.enums.AccountType;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -10,6 +12,8 @@ import java.util.Map;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class TrialBalanceResponse {
     private LocalDateTime asOfDate;
     private Map<AccountType, AccountTypeSummary> accountTypeSummaries;
@@ -19,6 +23,8 @@ public class TrialBalanceResponse {
 
     @Data
     @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class AccountTypeSummary {
         private BigDecimal totalDebits;
         private BigDecimal totalCredits;
@@ -26,8 +32,10 @@ public class TrialBalanceResponse {
 
     @Data
     @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class AccountBalanceDetail {
-        private String accountId;
+        private Long accountId;
         private String accountCode;
         private String accountName;
         private BigDecimal balance;

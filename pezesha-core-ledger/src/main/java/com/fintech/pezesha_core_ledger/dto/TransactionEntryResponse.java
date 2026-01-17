@@ -1,13 +1,17 @@
 package com.fintech.pezesha_core_ledger.dto;
 
 import com.fintech.pezesha_core_ledger.enums.Currency;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 @Data
 @Builder
-class TransactionEntryResponse {
+@AllArgsConstructor
+@NoArgsConstructor
+public class TransactionEntryResponse {
     private String accountId;
     private String accountCode;
     private BigDecimal debit;
