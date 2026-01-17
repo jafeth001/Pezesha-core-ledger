@@ -13,10 +13,14 @@ public class CacheConfig {
 
     @Bean
     public CacheManager cacheManager() {
-        CaffeineCacheManager cacheManager = new CaffeineCacheManager("idempotency");
+        CaffeineCacheManager cacheManager =
+                new CaffeineCacheManager("idempotency", "accountById", "allAccounts", "accountBalance", "trialBalance", "balanceSheet","accountsByType"
+                );
         cacheManager.setCaffeine(Caffeine.newBuilder()
                 .expireAfterWrite(24, TimeUnit.HOURS)
                 .maximumSize(10_000));
         return cacheManager;
     }
+
+
 }

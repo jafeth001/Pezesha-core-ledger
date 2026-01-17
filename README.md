@@ -119,6 +119,13 @@ The project includes:
 
 ## Running the Project
 
+
+The project uses **Swagger / OpenAPI** for interactive API documentation and testing.
+
+### Access Swagger UI
+
+After running the application via enpoint http://localhost:8090/swagger-ui/index.html
+
 1. Clone the repository
 2. Configure database connection in `application.yaml`
 3. Run the application:

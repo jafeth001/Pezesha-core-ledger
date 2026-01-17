@@ -186,9 +186,11 @@ public class TransactionService {
         Collections.sort(sorted);
 
         for (String accountId : sorted) {
+            // if lock already exists re-use it
             ReentrantLock lock = accountLocks.computeIfAbsent(accountId, k -> new ReentrantLock());
             boolean locked = false;
             try {
+                // create a new lock  if not
                 locked = lock.tryLock(30, TimeUnit.SECONDS);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();

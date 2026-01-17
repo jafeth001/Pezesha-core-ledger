@@ -5,7 +5,6 @@ import com.fintech.pezesha_core_ledger.dto.LoanAgingResponse;
 import com.fintech.pezesha_core_ledger.dto.TransactionEntryResponse;
 import com.fintech.pezesha_core_ledger.dto.TrialBalanceResponse;
 import com.fintech.pezesha_core_ledger.enums.AccountType;
-import com.fintech.pezesha_core_ledger.enums.Currency;
 import com.fintech.pezesha_core_ledger.enums.LoanStatus;
 import com.fintech.pezesha_core_ledger.exception.ResourceNotFoundException;
 import com.fintech.pezesha_core_ledger.models.Account;
@@ -115,7 +114,7 @@ public class ReportingService {
                 .build();
     }
 
-  // Enhanced getBalanceSheet in ReportingService.java
+  // Enhanced getBalanceSheet
 @Cacheable(value = "balanceSheet", key = "#asOfDate?.toString() ?: 'current'")
 public BalanceSheetResponse getBalanceSheet(LocalDateTime asOfDate) {
     LocalDateTime queryDate = asOfDate != null ? asOfDate : LocalDateTime.now();

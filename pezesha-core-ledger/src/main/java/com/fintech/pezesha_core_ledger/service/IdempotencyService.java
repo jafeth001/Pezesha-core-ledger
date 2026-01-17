@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Slf4j
 public class IdempotencyService {
-
     private final CacheManager cacheManager;
     private static final String CACHE_NAME = "idempotency";
 
