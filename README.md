@@ -43,7 +43,7 @@ This core ledger system provides **double-entry bookkeeping** functionality suit
 - **Loan** – Loan entity
 
 #### Configuration
-- **SecurityConfig** – Authentication and authorization
+- **SecurityConfig** – Authorization
 - **CacheConfig** – Caching strategies
 - **SwaggerConfig** – API documentation
 
